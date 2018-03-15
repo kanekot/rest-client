@@ -6,10 +6,30 @@
  * user guide available at https://docs.gradle.org/3.5/userguide/java_library_plugin.html
  */
 
+buildscript {
+  repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+
 // Apply the java-library plugin to add support for Java Library
 apply plugin: 'java-library'
 // http://gradle.monochromeroad.com/docs/userguide/eclipse_plugin.html
 apply plugin: 'eclipse'
+
+
+
+//apply plugin: 'io.spring.dependency-management'
+//apply plugin: "spring-boot"
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -27,5 +47,9 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.10.RELEASE'
+
 }
 
