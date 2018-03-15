@@ -6,23 +6,21 @@
  * user guide available at https://docs.gradle.org/3.5/userguide/java_library_plugin.html
  */
 
-// これはビルドスクリプト自体が依存しているライブラリなどを指定するブロック
+// これはビルドスクリプト自体が依存しているライブラリなどを指定するブロック（(プラグインを探す場所)）
 buildscript {
 	// 変数を定義するためのブロック
-  ext {
+	ext {
         springBootVersion = '1.5.10.RELEASE'
     }
     // 依存性を解決する際に、Maven リポジトリとしてアクセスする先を指定するブロック
-  repositories {
-    jcenter()
-        maven { url "http://repo.spring.io/repo/" }
+	repositories {
+		jcenter()
         maven { url "https://plugins.gradle.org/m2/" }
-  }
-  // 依存ライブラリを指定するブロック
-  dependencies {
-    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-
-  }
+	}
+	// 依存ライブラリを指定するブロック
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
 }
 
 apply plugin: 'java'
@@ -45,13 +43,13 @@ repositories {
     jcenter()
 }
 
-   sourceCompatibility = 1.8
-    eclipse{
-		project {
-        	buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
-        	natures 'org.eclipse.buildship.core.gradleprojectnature'
-    	}
-    }
+sourceCompatibility = 1.8
+eclipse{
+	project {
+    	buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
+    	natures 'org.eclipse.buildship.core.gradleprojectnature'
+	}
+}
 
 
 dependencies {
